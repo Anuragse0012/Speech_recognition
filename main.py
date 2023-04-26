@@ -44,10 +44,12 @@ async def upload(file: UploadFile = File(...)):
     return message
 
 
+@app.post("api/transcript")
+def getTranscript(filename:str):
+    return select_transcript(filename)
 @app.post("/api/translation")
 def getTranslation(text: str, from_code: str, to_code: str):
     return translate(text, from_code, to_code)
-
 
 @app.post("/api/summarize")
 def getSummarize(text: str):

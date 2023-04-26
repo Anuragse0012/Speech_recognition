@@ -2,6 +2,7 @@ import json
 
 import argostranslate.package
 import argostranslate.translate
+from tts_back import *
 
 
 def translate(text: str, from_code: str, to_code: str):
@@ -20,7 +21,10 @@ def translate(text: str, from_code: str, to_code: str):
         argostranslate.package.install_from_path(package_to_install.download())
         # Translate
         translatedText = argostranslate.translate.translate(text, from_code, to_code)
+
+        #store the TTS file
+
     except Exception:
         return {"message": "There is exception translating the text"}
 
-    return json.dump({'translation': translatedText})
+    return json.dumps({'translation': translatedText})
